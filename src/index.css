@@ -275,3 +275,5 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .fixture-flag { width: 1.5rem; height: 1rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
 .fixture-home { flex-direction: row-reverse; }
 .fixture-away { flex-direction: row; }
+
+.ko-flag { width: 1.4rem; height: 0.95rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
