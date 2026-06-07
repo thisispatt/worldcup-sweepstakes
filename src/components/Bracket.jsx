@@ -32,7 +32,7 @@ export default function Bracket({ knockout }) {
     <div className="section">
       <div className="section-header">
         <h1 className="section-title">Knockout Bracket</h1>
-        <p className="section-sub">28 Jun – 19 Jul 2026 · MetLife Stadium, New Jersey</p>
+        <p className="section-sub">28 Jun – 19 Jul 2026 · USA / Canada / Mexico</p>
       </div>
 
       {ROUNDS.map(({ key, label }) => {
