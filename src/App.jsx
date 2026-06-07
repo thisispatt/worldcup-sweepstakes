@@ -7,21 +7,24 @@ import Bracket from "./components/Bracket";
 import Prize from "./components/Prize";
 
 const NAV = [
-  { id: "sweep",    label: "Sweepstakes", icon: "🏆" },
-  { id: "groups",   label: "Groups",      icon: "📊" },
-  { id: "fixtures", label: "Fixtures",    icon: "📅" },
-  { id: "bracket",  label: "Bracket",     icon: "🗂" },
-  { id: "prize",    label: "Prize Pot",   icon: "💶" },
+  { id: "sweep",    label: "Sweepstakes", icon: "ti-trophy" },
+  { id: "groups",   label: "Groups",      icon: "ti-table" },
+  { id: "fixtures", label: "Fixtures",    icon: "ti-calendar-event" },
+  { id: "bracket",  label: "Bracket",     icon: "ti-tournament" },
+  { id: "prize",    label: "Prize Pot",   icon: "ti-coin-euro" },
 ];
 
 export default function App() {
   const [tab, setTab] = useState("sweep");
+
   return (
     <div className="app">
       <header className="header">
         <div className="header-inner">
           <div className="logo">
-            <span className="logo-ball">⚽</span>
+            <div className="logo-icon">
+              <i className="ti ti-ball-football" />
+            </div>
             <div>
               <div className="logo-title">World Cup 2026</div>
               <div className="logo-sub">Office Sweepstakes</div>
@@ -34,13 +37,14 @@ export default function App() {
                 className={`nav-btn${tab === n.id ? " active" : ""}`}
                 onClick={() => setTab(n.id)}
               >
-                <span className="nav-icon">{n.icon}</span>
+                <i className={`ti ${n.icon} nav-icon`} />
                 <span className="nav-label">{n.label}</span>
               </button>
             ))}
           </nav>
         </div>
       </header>
+
       <main className="main">
         {tab === "sweep"    && <Sweepstakes entries={entries} teamStatus={{}} groups={groups} />}
         {tab === "groups"   && <Groups groups={groups} fixtures={fixtures} />}
@@ -48,6 +52,7 @@ export default function App() {
         {tab === "bracket"  && <Bracket knockout={knockout} />}
         {tab === "prize"    && <Prize entries={entries} entryFee={ENTRY_FEE} prizes={PRIZES} teamStatus={{}} groups={groups} />}
       </main>
+
       <footer className="footer">
         FIFA World Cup 2026 · USA / Canada / Mexico · 11 Jun – 19 Jul
       </footer>
