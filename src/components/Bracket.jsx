@@ -24,7 +24,6 @@ function MatchCard({ match, groups, entryMap }) {
   const awayFlag = getTeamFlag(match.away, groups);
   const homeName = match.home ? entryMap[match.home] : null;
   const awayName = match.away ? entryMap[match.away] : null;
-
   return (
     <div className={`ko-match${match.played ? " ko-played" : ""}${empty ? " ko-empty" : ""}`}>
       <div className={`ko-team ko-home${homeWin ? " ko-winner" : ""}`}>
@@ -44,29 +43,6 @@ function MatchCard({ match, groups, entryMap }) {
         {match.played && <span className="ko-score">{match.score2}</span>}
       </div>
       <div className="ko-date">{match.date} · {match.time}</div>
-    </div>
-  );
-}
-
-function PrizeSidebar({ prizes, entryFee, entries }) {
-  const total  = entries.length * entryFee;
-  const first  = Math.round(total * prizes.first);
-  const second = Math.round(total * prizes.second);
-  const third  = Math.round(total * prizes.third);
-  return (
-    <div className="ko-prize-sidebar">
-      <div className="ko-prize-card" style={{ borderTop: "3px solid #f59e0b" }}>
-        <div className="ko-prize-amt">€{first}</div>
-        <div className="ko-prize-lbl">1st place</div>
-      </div>
-      <div className="ko-prize-card" style={{ borderTop: "3px solid #94a3b8" }}>
-        <div className="ko-prize-amt">€{second}</div>
-        <div className="ko-prize-lbl">Runner-up</div>
-      </div>
-      <div className="ko-prize-card" style={{ borderTop: "3px solid #d97706" }}>
-        <div className="ko-prize-amt">€{third}</div>
-        <div className="ko-prize-lbl">3rd place</div>
-      </div>
     </div>
   );
 }
@@ -98,35 +74,35 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
       })}
 
       <div className="ko-round">
-  <div className="ko-final-row">
-    <div>
-      <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
-      {knockout.Third?.map(m => (
-        <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
-      ))}
+        <div className="ko-final-row">
+          <div>
+            <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
+            {knockout.Third?.map(m => (
+              <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
+            ))}
+          </div>
+          <div className="ko-prize-card" style={{ borderTop: "3px solid #d97706" }}>
+            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.third)}</div>
+            <div className="ko-prize-lbl">3rd place</div>
+          </div>
+        </div>
+        <div className="ko-final-row" style={{ marginTop: "1.5rem" }}>
+          <div>
+            <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
+            {knockout.Final?.map(m => (
+              <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
+            ))}
+          </div>
+          <div className="ko-prize-card" style={{ borderTop: "3px solid #f59e0b" }}>
+            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.first)}</div>
+            <div className="ko-prize-lbl">1st place</div>
+          </div>
+          <div className="ko-prize-card" style={{ borderTop: "3px solid #94a3b8" }}>
+            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.second)}</div>
+            <div className="ko-prize-lbl">Runner-up</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div className="ko-prize-card" style={{ borderTop: "3px solid #d97706" }}>
-      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.third)}</div>
-      <div className="ko-prize-lbl">3rd place</div>
-    </div>
-  </div>
-
-  <div className="ko-final-row" style={{ marginTop: "1.5rem" }}>
-    <div>
-      <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
-      {knockout.Final?.map(m => (
-        <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
-      ))}
-    </div>
-    <div className="ko-prize-card" style={{ borderTop: "3px solid #f59e0b" }}>
-      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.first)}</div>
-      <div className="ko-prize-lbl">1st place</div>
-    </div>
-    <div className="ko-prize-card" style={{ borderTop: "3px solid #94a3b8" }}>
-      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.second)}</div>
-      <div className="ko-prize-lbl">Runner-up</div>
-    </div>
-  </div>
-</div>
   );
 }
