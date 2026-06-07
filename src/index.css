@@ -4,11 +4,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:     #16a34a;
-  --green-dk:  #15803d;
-  --green-lt:  #f0fdf4;
-  --green-mid: #dcfce7;
-  --accent:    #16a34a;
+  --red:       #FF4B44;
+  --red-dk:    #e03d37;
+  --red-lt:    #fff1f0;
+  --red-mid:   #ffe0df;
+  --purple:    #9373DC;
+  --purple-lt: #f3f0fd;
   --ink:       #111827;
   --ink-2:     #374151;
   --ink-3:     #6b7280;
@@ -50,7 +51,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .logo { display: flex; align-items: center; gap: 0.65rem; }
 .logo-icon {
   width: 34px; height: 34px;
-  background: var(--green);
+  background: var(--red);
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 1.1rem;
@@ -70,7 +71,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   white-space: nowrap;
 }
 .nav-btn:hover { background: var(--surface); color: var(--ink); }
-.nav-btn.active { background: var(--green-lt); color: var(--green-dk); font-weight: 600; }
+.nav-btn.active { background: var(--red-lt); color: var(--red-dk); font-weight: 600; }
 .nav-icon { font-size: 1rem; }
 
 /* ─── MAIN ───────────────────────────────────────── */
@@ -104,7 +105,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   transition: border-color 0.12s, box-shadow 0.12s;
 }
 .search-input::placeholder { color: var(--ink-4); }
-.search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(22,163,74,0.1); }
+.search-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,75,68,0.1); }
 
 .filter-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .pill {
@@ -114,8 +115,8 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   font-family: var(--font); font-size: 0.78rem; font-weight: 500; color: var(--ink-3);
   transition: all 0.12s;
 }
-.pill:hover { border-color: var(--green); color: var(--green); }
-.pill-active { background: var(--green); border-color: var(--green); color: #fff !important; }
+.pill:hover { border-color: var(--red); color: var(--red); }
+.pill-active { background: var(--red); border-color: var(--red); color: #fff !important; }
 
 .entry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.65rem; }
 .entry-card {
@@ -132,8 +133,8 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .entry-flag img { width: 2.6rem; height: 1.75rem; object-fit: cover; border-radius: 3px; display: block; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
 .entry-info { flex: 1; min-width: 0; }
 .entry-team { font-weight: 600; font-size: 0.88rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.entry-name { font-size: 0.78rem; color: var(--ink-3); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tbd { font-style: italic; color: var(--ink-4); }
+.entry-name { font-size: 0.78rem; color: var(--purple); font-weight: 500; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tbd { font-style: italic; color: var(--ink-4); font-weight: 400; }
 .entry-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
 .entry-group { font-size: 0.68rem; color: var(--ink-4); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
 .status-badge { font-size: 0.66rem; font-weight: 600; padding: 2px 7px; border-radius: 10px; white-space: nowrap; letter-spacing: 0.02em; }
@@ -149,17 +150,17 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .group-table th.th-team { text-align: left; padding-left: 1rem; }
 .group-table td { padding: 0.5rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); color: var(--ink-2); }
 .group-table tr:last-child td { border-bottom: none; }
-.row-qualify { background: var(--green-lt); }
+.row-qualify { background: var(--red-lt); }
 .td-team { display: flex !important; align-items: center; gap: 0.4rem; padding-left: 0.75rem !important; text-align: left !important; }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .team-flag { width: 1.5rem; height: 1rem; flex-shrink: 0; }
 .team-flag img { width: 1.5rem; height: 1rem; object-fit: cover; border-radius: 2px; display: block; }
 .team-name-sm { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; color: var(--ink); }
-.pos { color: var(--green-dk); font-weight: 600; }
+.pos { color: var(--red-dk); font-weight: 600; }
 .neg { color: #dc2626; font-weight: 600; }
 .pts { font-weight: 700; color: var(--ink); }
-.qualify-note { display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.75rem; font-size: 0.68rem; color: var(--green-dk); background: var(--green-mid); font-weight: 500; }
-.qualify-bar { width: 8px; height: 2px; background: var(--green); border-radius: 2px; }
+.qualify-note { display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.75rem; font-size: 0.68rem; color: var(--red-dk); background: var(--red-mid); font-weight: 500; }
+.qualify-bar { width: 8px; height: 2px; background: var(--red); border-radius: 2px; }
 
 /* ─── FIXTURES ───────────────────────────────────── */
 .group-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
@@ -170,7 +171,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   font-family: var(--font); font-size: 0.78rem; font-weight: 500; color: var(--ink-3);
   transition: all 0.12s;
 }
-.group-tab:hover { border-color: var(--green); color: var(--green); }
+.group-tab:hover { border-color: var(--red); color: var(--red); }
 .group-tab-active { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 600; }
 
 .fixtures-list { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -183,19 +184,20 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   transition: border-color 0.12s;
 }
 .fixture-row:hover { border-color: var(--border-2); }
-.fixture-played { border-left: 3px solid var(--green); }
+.fixture-played { border-left: 3px solid var(--red); }
 .fixture-meta { display: flex; flex-direction: column; align-items: flex-start; min-width: 76px; gap: 1px; }
-.fixture-group { font-size: 0.65rem; font-weight: 700; color: var(--green-dk); letter-spacing: 0.06em; text-transform: uppercase; }
+.fixture-group { font-size: 0.65rem; font-weight: 700; color: var(--red); letter-spacing: 0.06em; text-transform: uppercase; }
 .fixture-date { font-size: 0.75rem; color: var(--ink-3); font-weight: 500; }
 .fixture-time { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
 .fixture-match { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
-.fixture-team { font-size: 0.88rem; font-weight: 500; flex: 1; color: var(--ink-2); }
-.fixture-home { text-align: right; }
-.fixture-away { text-align: left; }
+.fixture-team { font-size: 0.88rem; font-weight: 500; flex: 1; color: var(--ink-2); display: flex; align-items: center; gap: 0.5rem; }
+.fixture-home { flex-direction: row-reverse; }
+.fixture-away { flex-direction: row; }
 .winner { font-weight: 700; color: var(--ink); }
 .fixture-score { min-width: 64px; text-align: center; }
 .score-result { font-size: 1.05rem; font-weight: 700; color: var(--ink); letter-spacing: 0.02em; }
 .score-vs { font-size: 0.72rem; color: var(--ink-4); font-weight: 500; padding: 0.2rem 0.55rem; border: 1px solid var(--border); border-radius: 4px; }
+.fixture-flag { width: 1.5rem; height: 1rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
 
 /* ─── BRACKET ────────────────────────────────────── */
 .ko-round { margin-bottom: 2rem; }
@@ -211,16 +213,17 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius); overflow: hidden;
 }
-.ko-played { border-left: 3px solid var(--green); }
+.ko-played { border-left: 3px solid var(--red); }
 .ko-empty { opacity: 0.4; }
 .ko-team {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: center; gap: 0.4rem;
   padding: 0.55rem 0.85rem; font-size: 0.85rem; font-weight: 500; color: var(--ink-2);
   border-bottom: 1px solid var(--border);
 }
 .ko-team:last-of-type { border-bottom: none; }
-.ko-winner { font-weight: 700; color: var(--ink); background: var(--green-lt); }
-.ko-score { font-size: 1rem; font-weight: 700; color: var(--ink); }
+.ko-winner { font-weight: 700; color: var(--ink); background: var(--red-lt); }
+.ko-score { font-size: 1rem; font-weight: 700; color: var(--ink); margin-left: auto; }
+.ko-flag { width: 1.4rem; height: 0.95rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
 .ko-date { font-size: 0.68rem; color: var(--ink-4); text-align: center; padding: 0.3rem; background: var(--surface); border-top: 1px solid var(--border); }
 
 /* ─── PRIZE ──────────────────────────────────────── */
@@ -246,7 +249,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .prize-winner { display: flex; align-items: center; gap: 0.6rem; background: var(--surface); border-radius: var(--radius-sm); padding: 0.6rem 0.75rem; }
 .winner-flag { width: 2.25rem; height: 1.5rem; flex-shrink: 0; }
 .winner-flag img { width: 2.25rem; height: 1.5rem; object-fit: cover; border-radius: 3px; display: block; }
-.winner-name { font-weight: 600; font-size: 0.85rem; color: var(--ink); }
+.winner-name { font-weight: 600; font-size: 0.85rem; color: var(--purple); }
 .winner-team { font-size: 0.73rem; color: var(--ink-3); }
 .prize-tbd { font-size: 0.8rem; color: var(--ink-4); font-style: italic; margin-top: 1rem; }
 
@@ -254,7 +257,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .info-box-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
 .info-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .info-list li { font-size: 0.85rem; color: var(--ink-2); padding-left: 1.1rem; position: relative; line-height: 1.5; }
-.info-list li::before { content: "–"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.info-list li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 .info-list strong { color: var(--ink); font-weight: 600; }
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
@@ -270,10 +273,3 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
   .fixture-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
   .fixture-meta { flex-direction: row; gap: 0.75rem; align-items: center; }
 }
-
-.fixture-team { display: flex; align-items: center; gap: 0.5rem; }
-.fixture-flag { width: 1.5rem; height: 1rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
-.fixture-home { flex-direction: row-reverse; }
-.fixture-away { flex-direction: row; }
-
-.ko-flag { width: 1.4rem; height: 0.95rem; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
