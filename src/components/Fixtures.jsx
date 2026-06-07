@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+
+const MONTH = { Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12 };
+
+function sortKey(f) {
+  const [day, mon] = f.date.split(" ");
+  return MONTH[mon] * 10000 + parseInt(day) * 100 + parseInt(f.time.replace(":", ""));
+}
 
 export default function Fixtures({ fixtures }) {
   const [activeGroup, setActiveGroup] = useState("all");
   const groups = ["all","A","B","C","D","E","F","G","H","I","J","K","L"];
 
-  const filtered = activeGroup === "all"
-    ? fixtures
-    : fixtures.filter(f => f.group === activeGroup);
+  const filtered = useMemo(() => {
+    const list = activeGroup === "all"
+      ? fixtures
+      : fixtures.filter(f => f.group === activeGroup);
+    return [...list].sort((a, b) => sortKey(a) - sortKey(b));
+  }, [fixtures, activeGroup]);
 
   return (
     <div className="section">
