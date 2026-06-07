@@ -50,6 +50,7 @@ function MatchCard({ match, groups, entryMap }) {
 export default function Bracket({ knockout, groups, entries, entryFee, prizes }) {
   const entryMap = {};
   entries.forEach(e => { entryMap[e.team] = e.name !== "TBD" ? e.name : null; });
+  const paid = entries.filter(e => e.name !== "TBD").length;
 
   return (
     <div className="section">
@@ -82,7 +83,7 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
             ))}
           </div>
           <div className="ko-prize-card" style={{ borderTop: "3px solid #d97706" }}>
-            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.third)}</div>
+            <div className="ko-prize-amt">€{Math.round(paid * entryFee * prizes.third)}</div>
             <div className="ko-prize-lbl">3rd place</div>
           </div>
         </div>
@@ -95,11 +96,11 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
             ))}
           </div>
           <div className="ko-prize-card" style={{ borderTop: "3px solid #f59e0b" }}>
-            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.first)}</div>
+            <div className="ko-prize-amt">€{Math.round(paid * entryFee * prizes.first)}</div>
             <div className="ko-prize-lbl">1st place</div>
           </div>
           <div className="ko-prize-card" style={{ borderTop: "3px solid #94a3b8" }}>
-            <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.second)}</div>
+            <div className="ko-prize-amt">€{Math.round(paid * entryFee * prizes.second)}</div>
             <div className="ko-prize-lbl">Runner-up</div>
           </div>
         </div>
