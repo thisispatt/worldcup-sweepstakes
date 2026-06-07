@@ -98,7 +98,6 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
       })}
 
       <div className="ko-round">
-        <h2 className="ko-round-label">Semi-finals to Final</h2>
         <div className="ko-finals-layout">
           <div className="ko-finals-matches">
             <div style={{ marginBottom: "1rem" }}>
