@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { entries, groups, fixtures, knockout, teamStatus, ENTRY_FEE, PRIZES } from "./data";
+import { entries, groups, fixtures, knockout, ENTRY_FEE, PRIZES } from "./data";
 import Sweepstakes from "./components/Sweepstakes";
 import Groups from "./components/Groups";
 import Fixtures from "./components/Fixtures";
@@ -16,7 +16,6 @@ const NAV = [
 
 export default function App() {
   const [tab, setTab] = useState("sweep");
-
   return (
     <div className="app">
       <header className="header">
@@ -42,15 +41,13 @@ export default function App() {
           </nav>
         </div>
       </header>
-
       <main className="main">
-        {tab === "sweep"    && <Sweepstakes entries={entries} teamStatus={teamStatus} groups={groups} />}
+        {tab === "sweep"    && <Sweepstakes entries={entries} teamStatus={{}} groups={groups} />}
         {tab === "groups"   && <Groups groups={groups} fixtures={fixtures} />}
         {tab === "fixtures" && <Fixtures fixtures={fixtures} />}
         {tab === "bracket"  && <Bracket knockout={knockout} />}
-        {tab === "prize"    && <Prize entries={entries} entryFee={ENTRY_FEE} prizes={PRIZES} teamStatus={teamStatus} groups={groups} />}
+        {tab === "prize"    && <Prize entries={entries} entryFee={ENTRY_FEE} prizes={PRIZES} teamStatus={{}} groups={groups} />}
       </main>
-
       <footer className="footer">
         FIFA World Cup 2026 · USA / Canada / Mexico · 11 Jun – 19 Jul
       </footer>
