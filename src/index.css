@@ -275,3 +275,8 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 }
 
 .team-colleague { font-size: 0.68rem; color: #9373DC; font-weight: 500; margin-top: 1px; }
+
+.fixture-team-info { display: flex; flex-direction: column; }
+.fixture-team-info-home { text-align: right; }
+.fixture-team-info-away { text-align: left; }
+.fixture-colleague { font-size: 0.68rem; color: #9373DC; font-weight: 500; }
