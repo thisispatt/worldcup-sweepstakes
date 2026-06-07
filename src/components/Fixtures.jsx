@@ -4,7 +4,8 @@ const MONTH = { Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov
 
 function sortKey(f) {
   const [day, mon] = f.date.split(" ");
-  return MONTH[mon] * 10000 + parseInt(day) * 100 + parseInt(f.time.replace(":", ""));
+  const [h, m] = f.time.split(":").map(Number);
+  return (MONTH[mon] * 31 * 1440) + (parseInt(day) * 1440) + (h * 60) + m;
 }
 
 export default function Fixtures({ fixtures }) {
