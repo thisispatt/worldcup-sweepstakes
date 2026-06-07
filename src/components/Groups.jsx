@@ -27,14 +27,20 @@ function calcStandings(teams, fixtures) {
 }
 
 const STATUS_DOT = {
-  active:      "#1a8a4a",
+  active:      "#16a34a",
   eliminated:  "#ccc",
-  champion:    "#f5a623",
+  champion:    "#FF4B44",
   "runner-up": "#90a4ae",
   third:       "#a1887f",
 };
 
-export default function Groups({ groups, fixtures }) {
+export default function Groups({ groups, fixtures, entries }) {
+  const entryMap = useMemo(() => {
+    const map = {};
+    entries.forEach(e => { map[e.team] = e.name; });
+    return map;
+  }, [entries]);
+
   const computed = useMemo(() =>
     Object.entries(groups).map(([letter, g]) => ({
       letter,
@@ -73,6 +79,7 @@ export default function Groups({ groups, fixtures }) {
                   const pts = team.won * 3 + team.drawn;
                   const gd  = team.gf - team.ga;
                   const isQ = idx < 2;
+                  const colleague = entryMap[team.name];
                   return (
                     <tr key={team.name} className={isQ ? "row-qualify" : ""}>
                       <td className="td-team">
@@ -84,7 +91,12 @@ export default function Groups({ groups, fixtures }) {
                         <span className="team-flag">
                           <img src={getFlag(team.flag)} alt={team.name} />
                         </span>
-                        <span className="team-name-sm">{team.name}</span>
+                        <div>
+                          <div className="team-name-sm">{team.name}</div>
+                          {colleague && colleague !== "TBD" && (
+                            <div className="team-colleague">{colleague}</div>
+                          )}
+                        </div>
                       </td>
                       <td>{team.played}</td>
                       <td>{team.won}</td>
