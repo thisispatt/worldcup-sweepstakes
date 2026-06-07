@@ -88,9 +88,10 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
               </div>
               <div className="entry-right">
                 <span className="entry-group">Grp {e.group}</span>
-                <span className="status-badge" style={{ color: sc.color, background: sc.bg }}>
-                  {sc.label}
-                </span>
+                {e.status === "active"
+  ? <span className="status-pulse" />
+  : <span className="status-badge" style={{ color: sc.color, background: sc.bg }}>{sc.label}</span>
+}
               </div>
             </div>
           );
