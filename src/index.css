@@ -280,3 +280,6 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .fixture-team-info-home { text-align: right; }
 .fixture-team-info-away { text-align: left; }
 .fixture-colleague { font-size: 0.68rem; color: #9373DC; font-weight: 500; }
+
+.ko-team-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.ko-colleague { font-size: 0.65rem; color: #9373DC; font-weight: 500; }
