@@ -74,9 +74,9 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
       })}
 
       <div className="ko-round">
+        <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
         <div className="ko-final-row">
           <div>
-            <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
             {knockout.Third?.map(m => (
               <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
             ))}
@@ -86,9 +86,10 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
             <div className="ko-prize-lbl">3rd place</div>
           </div>
         </div>
-        <div className="ko-final-row" style={{ marginTop: "1.5rem" }}>
+
+        <div className="ko-round-label" style={{ marginBottom: "0.5rem", marginTop: "1.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
+        <div className="ko-final-row">
           <div>
-            <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
             {knockout.Final?.map(m => (
               <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
             ))}
