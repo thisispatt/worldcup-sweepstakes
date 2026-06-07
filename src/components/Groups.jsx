@@ -1,31 +1,27 @@
 import { useMemo } from "react";
+import { getFlag } from "../flag";
 
-// ─── Calculate standings for one group from all played fixtures ───
 function calcStandings(teams, fixtures) {
   const stats = {};
   teams.forEach(t => {
-    stats[t.name] = { ...t, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, prevPos: null };
+    stats[t.name] = { ...t, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0 };
   });
-
   fixtures
     .filter(f => f.played && f.score1 !== null && f.score2 !== null)
     .forEach(f => {
       const h = stats[f.home];
       const a = stats[f.away];
       if (!h || !a) return;
-
       h.played++; a.played++;
       h.gf += f.score1; h.ga += f.score2;
       a.gf += f.score2; a.ga += f.score1;
-
       if (f.score1 > f.score2)      { h.won++;   a.lost++;  }
       else if (f.score1 < f.score2) { a.won++;   h.lost++;  }
       else                          { h.drawn++; a.drawn++; }
     });
-
   return Object.values(stats).sort((a, b) => {
-    const pts = (x) => x.won * 3 + x.drawn;
-    const gd  = (x) => x.gf - x.ga;
+    const pts = x => x.won * 3 + x.drawn;
+    const gd  = x => x.gf - x.ga;
     return pts(b) - pts(a) || gd(b) - gd(a) || b.gf - a.gf || a.name.localeCompare(b.name);
   });
 }
@@ -42,10 +38,7 @@ export default function Groups({ groups, fixtures }) {
   const computed = useMemo(() =>
     Object.entries(groups).map(([letter, g]) => ({
       letter,
-      standings: calcStandings(
-        g.teams,
-        fixtures.filter(f => f.group === letter)
-      ),
+      standings: calcStandings(g.teams, fixtures.filter(f => f.group === letter)),
     })),
   [groups, fixtures]);
 
@@ -55,7 +48,6 @@ export default function Groups({ groups, fixtures }) {
         <h1 className="section-title">Group stage</h1>
         <p className="section-sub">12 groups · top 2 + 8 best 3rd place teams advance to Round of 32</p>
       </div>
-
       <div className="groups-grid">
         {computed.map(({ letter, standings }) => (
           <div key={letter} className="group-card">
@@ -89,7 +81,9 @@ export default function Groups({ groups, fixtures }) {
                           style={{ background: STATUS_DOT[team.status] || STATUS_DOT.active }}
                           title={team.status}
                         />
-                        <span className="team-flag">{team.flag}</span>
+                        <span className="team-flag">
+                          <img src={getFlag(team.flag)} alt={team.name} />
+                        </span>
                         <span className="team-name-sm">{team.name}</span>
                       </td>
                       <td>{team.played}</td>
