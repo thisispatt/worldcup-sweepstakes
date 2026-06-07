@@ -9,7 +9,7 @@ function getTeamFlag(teamName, groups) {
 }
 
 export default function Prize({ entries, entryFee, prizes, teamStatus, groups }) {
-  const total  = entries.length * entryFee;
+  const total  = entries.filter(e => e.name !== "TBD").length * entryFee;
   const first  = Math.round(total * prizes.first);
   const second = Math.round(total * prizes.second);
   const third  = Math.round(total * prizes.third);
