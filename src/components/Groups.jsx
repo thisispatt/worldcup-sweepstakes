@@ -78,7 +78,7 @@ export default function Groups({ groups, fixtures, entries }) {
                         <div className="td-team-inner">
                           {team.status === "eliminated"
                             ? <span className="status-dot" style={{ background: "#ccc" }} />
-                            : <span className="status-pulse" />
+                            : <span className="status-pulse" style={{ width: "6px", height: "6px" }} />
                           }
                           <span className="team-flag">
                             <img src={getFlag(team.flag)} alt={team.name} />
