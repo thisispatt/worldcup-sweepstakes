@@ -286,7 +286,7 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 
 .ko-final-row { display: flex; gap: 0.75rem; align-items: stretch; }
 .ko-final-row .ko-match { width: 220px; flex-shrink: 0; }
-.ko-prize-card { background: var(--white); border: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); padding: 0.85rem 1rem; text-align: center; display: flex; flex-direction: column; justify-content: center; min-width: 90px; }
+.ko-prize-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem 1rem; text-align: center; display: flex; flex-direction: column; justify-content: center; min-width: 90px; align-self: stretch; }
 .ko-prize-amt { font-size: 1.3rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 .ko-prize-lbl { font-size: 0.68rem; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
 
