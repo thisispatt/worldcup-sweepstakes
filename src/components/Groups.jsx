@@ -92,7 +92,7 @@ export default function Groups({ groups, fixtures, entries }) {
                           <img src={getFlag(team.flag)} alt={team.name} />
                         </span>
                         <div>
-                          <div className="team-name-sm">{team.name}</div>
+                          <div className="team-name-sm">{team.shortName || team.name}</div>
                           {colleague && colleague !== "TBD" && (
                             <div className="team-colleague">{colleague}</div>
                           )}
