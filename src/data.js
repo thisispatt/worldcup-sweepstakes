@@ -85,7 +85,7 @@ export const groups = {
   ]},
   B: { teams: [
     { name: "Canada",               flag: "ca", status: "active" },
-    { name: "Bosnia-Herzegovina", flag: "ba", status: "active" },
+    { name: "Bosnia-Herzegovina", flag: "ba", shortName: "Bosnia-Herz", status: "active" },
     { name: "Qatar",                flag: "qa", status: "active" },
     { name: "Switzerland",          flag: "ch", status: "active" },
   ]},
