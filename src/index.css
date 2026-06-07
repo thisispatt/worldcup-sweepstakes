@@ -289,3 +289,6 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .ko-prize-card { background: var(--white); border: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); padding: 0.85rem 1rem; text-align: center; display: flex; flex-direction: column; justify-content: center; min-width: 90px; }
 .ko-prize-amt { font-size: 1.3rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 .ko-prize-lbl { font-size: 0.68rem; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+.status-pulse { width: 9px; height: 9px; border-radius: 50%; background: #16a34a; display: inline-block; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.75); } }
