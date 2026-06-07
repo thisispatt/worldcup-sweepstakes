@@ -1,35 +1,20 @@
 import { useMemo, useState } from "react";
+import { getFlag } from "../flag";
 
 const STATUS_CONFIG = {
-  active:    { label: "Active",     color: "#1a8a4a", bg: "#e6f7ee" },
-  eliminated:{ label: "Eliminated", color: "#888",    bg: "#f2f2f2" },
-  champion:  { label: "Champion 🥇",color: "#b8860b", bg: "#fff8dc" },
+  active:     { label: "Active",       color: "#1a8a4a", bg: "#e6f7ee" },
+  eliminated: { label: "Eliminated",   color: "#888",    bg: "#f2f2f2" },
+  champion:   { label: "Champion 🥇",  color: "#b8860b", bg: "#fff8dc" },
   "runner-up":{ label: "Runner-up 🥈", color: "#607d8b", bg: "#eceff1" },
-  third:     { label: "3rd Place 🥉", color: "#8d6e63", bg: "#efebe9" },
+  third:      { label: "3rd Place 🥉", color: "#8d6e63", bg: "#efebe9" },
 };
 
-function getTeamStatus(teamName, groups, teamStatusOverride) {
-  if (teamStatusOverride[teamName]) return teamStatusOverride[teamName];
-  for (const g of Object.values(groups)) {
-    const t = g.teams.find(t => t.name === teamName);
-    if (t && t.status) return t.status;
-  }
-  return "active";
-}
-
-function getGroupForTeam(teamName, groups) {
+function getTeamData(teamName, groups) {
   for (const [key, g] of Object.entries(groups)) {
-    if (g.teams.find(t => t.name === teamName)) return key;
-  }
-  return "";
-}
-
-function getFlagForTeam(teamName, groups) {
-  for (const g of Object.values(groups)) {
     const t = g.teams.find(t => t.name === teamName);
-    if (t) return t.flag;
+    if (t) return { status: t.status, flag: t.flag, group: key };
   }
-  return "🏳";
+  return { status: "active", flag: null, group: "" };
 }
 
 export default function Sweepstakes({ entries, teamStatus, groups }) {
@@ -37,12 +22,15 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
   const [filter, setFilter] = useState("all");
 
   const enriched = useMemo(() =>
-    entries.map(e => ({
-      ...e,
-      flag: getFlagForTeam(e.team, groups),
-      group: getGroupForTeam(e.team, groups),
-      status: getTeamStatus(e.team, groups, teamStatus),
-    })), [entries, groups, teamStatus]);
+    entries.map(e => {
+      const data = getTeamData(e.team, groups);
+      return {
+        ...e,
+        flagCode: data.flag,
+        group: data.group,
+        status: teamStatus[e.team] || data.status,
+      };
+    }), [entries, groups, teamStatus]);
 
   const filtered = enriched.filter(e => {
     const matchSearch = search === "" ||
@@ -53,18 +41,16 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
   });
 
   const counts = useMemo(() => ({
-    active: enriched.filter(e => e.status === "active").length,
-    eliminated: enriched.filter(e => e.status === "eliminated").length,
-    special: enriched.filter(e => ["champion","runner-up","third"].includes(e.status)).length,
+    active:    enriched.filter(e => e.status === "active").length,
+    eliminated:enriched.filter(e => e.status === "eliminated").length,
   }), [enriched]);
 
   return (
     <div className="section">
       <div className="section-header">
-        <h1 className="section-title">Sweepstakes Entries</h1>
+        <h1 className="section-title">Sweepstakes entries</h1>
         <p className="section-sub">48 teams · 48 participants · €{entries.length * 5} prize pot</p>
       </div>
-
       <div className="sweep-controls">
         <input
           className="search-input"
@@ -75,8 +61,8 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
         />
         <div className="filter-pills">
           {[
-            { id: "all", label: `All (${enriched.length})` },
-            { id: "active", label: `Active (${counts.active})` },
+            { id: "all",        label: `All (${enriched.length})` },
+            { id: "active",     label: `Active (${counts.active})` },
             { id: "eliminated", label: `Eliminated (${counts.eliminated})` },
           ].map(f => (
             <button
@@ -87,14 +73,15 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
           ))}
         </div>
       </div>
-
       <div className="entry-grid">
         {filtered.map((e, i) => {
           const sc = STATUS_CONFIG[e.status] || STATUS_CONFIG.active;
           const isOut = e.status === "eliminated";
           return (
             <div key={i} className={`entry-card${isOut ? " entry-out" : ""}`}>
-              <div className="entry-flag">{e.flag}</div>
+              <div className="entry-flag">
+                <img src={getFlag(e.flagCode)} alt={e.team} />
+              </div>
               <div className="entry-info">
                 <div className="entry-team">{e.team}</div>
                 <div className="entry-name">{e.name === "TBD" ? <em className="tbd">— not assigned —</em> : e.name}</div>
