@@ -284,8 +284,11 @@ html, body { height: 100%; background: var(--surface); color: var(--ink); font-f
 .ko-team-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .ko-colleague { font-size: 0.65rem; color: #9373DC; font-weight: 500; }
 
-.ko-finals-layout { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start; }
-.ko-finals-matches { display: flex; flex-direction: column; gap: 0; }
+.ko-finals-layout { display: flex; gap: 1.5rem; align-items: flex-start; }
+.ko-finals-matches { display: flex; flex-direction: column; gap: 1rem; }
+.ko-finals-matches .ko-match { width: 220px; }
+.ko-prize-sidebar { display: flex; flex-direction: column; justify-content: space-between; align-self: stretch; }
+.ko-prize-card { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .ko-prize-sidebar { display: flex; flex-direction: column; gap: 0.5rem; min-width: 100px; }
 .ko-prize-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem 1rem; text-align: center; border-radius: 0 0 var(--radius) var(--radius); }
 .ko-prize-amt { font-size: 1.3rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
