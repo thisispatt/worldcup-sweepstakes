@@ -18,23 +18,31 @@ function getTeamFlag(teamName, groups) {
   return null;
 }
 
-function MatchCard({ match, groups }) {
+function MatchCard({ match, groups, entryMap }) {
   const homeWin = match.played && match.score1 > match.score2;
   const awayWin = match.played && match.score2 > match.score1;
   const empty = !match.home && !match.away;
   const homeFlag = getTeamFlag(match.home, groups);
   const awayFlag = getTeamFlag(match.away, groups);
+  const homeName = match.home ? entryMap[match.home] : null;
+  const awayName = match.away ? entryMap[match.away] : null;
 
   return (
     <div className={`ko-match${match.played ? " ko-played" : ""}${empty ? " ko-empty" : ""}`}>
       <div className={`ko-team ko-home${homeWin ? " ko-winner" : ""}`}>
         {homeFlag && <img src={getFlag(homeFlag)} alt={match.home} className="ko-flag" />}
-        <span>{match.home || "TBD"}</span>
+        <div className="ko-team-info">
+          <span>{match.home || "TBD"}</span>
+          {homeName && <span className="ko-colleague">{homeName}</span>}
+        </div>
         {match.played && <span className="ko-score">{match.score1}</span>}
       </div>
       <div className={`ko-team ko-away${awayWin ? " ko-winner" : ""}`}>
         {awayFlag && <img src={getFlag(awayFlag)} alt={match.away} className="ko-flag" />}
-        <span>{match.away || "TBD"}</span>
+        <div className="ko-team-info">
+          <span>{match.away || "TBD"}</span>
+          {awayName && <span className="ko-colleague">{awayName}</span>}
+        </div>
         {match.played && <span className="ko-score">{match.score2}</span>}
       </div>
       <div className="ko-date">{match.date} · {match.time}</div>
@@ -42,7 +50,10 @@ function MatchCard({ match, groups }) {
   );
 }
 
-export default function Bracket({ knockout, groups }) {
+export default function Bracket({ knockout, groups, entries }) {
+  const entryMap = {};
+  entries.forEach(e => { entryMap[e.team] = e.name !== "TBD" ? e.name : null; });
+
   return (
     <div className="section">
       <div className="section-header">
@@ -56,7 +67,9 @@ export default function Bracket({ knockout, groups }) {
           <div key={key} className="ko-round">
             <h2 className="ko-round-label">{label}</h2>
             <div className="ko-grid">
-              {matches.map(m => <MatchCard key={m.id} match={m} groups={groups} />)}
+              {matches.map(m => (
+                <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
+              ))}
             </div>
           </div>
         );
