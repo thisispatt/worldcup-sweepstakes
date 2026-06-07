@@ -26,8 +26,8 @@ export default function App() {
               <i className="ti ti-ball-football" />
             </div>
             <div>
-              <div className="logo-title">World Cup 2026</div>
-              <div className="logo-sub">Office Sweepstakes</div>
+              <div className="logo-title">ABW™ World Cup 2026</div>
+              <div className="logo-sub">Sweepstakes</div>
             </div>
           </div>
           <nav className="nav">
