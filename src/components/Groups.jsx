@@ -81,7 +81,7 @@ export default function Groups({ groups, fixtures, entries }) {
                   const isThird = idx === 1;
                   const colleague = entryMap[team.name];
                   return (
-                    <tr key={team.name} className={isThird ? "row-third" : ""}>
+                      <tr key={team.name} className={isThird ? "row-third" : ""} style={team.status === "eliminated" ? { opacity: 0.45 } : {}}>
                       <td className="td-team">
                         <div className="td-team-inner">
                           <span
