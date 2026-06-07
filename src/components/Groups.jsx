@@ -26,14 +26,6 @@ function calcStandings(teams, fixtures) {
   });
 }
 
-const STATUS_DOT = {
-  active:      "#16a34a",
-  eliminated:  "#ccc",
-  champion:    "#FF4B44",
-  "runner-up": "#90a4ae",
-  third:       "#a1887f",
-};
-
 export default function Groups({ groups, fixtures, entries }) {
   const entryMap = useMemo(() => {
     const map = {};
@@ -81,14 +73,13 @@ export default function Groups({ groups, fixtures, entries }) {
                   const isThird = idx === 1;
                   const colleague = entryMap[team.name];
                   return (
-                      <tr key={team.name} className={isThird ? "row-third" : ""} style={team.status === "eliminated" ? { opacity: 0.45 } : {}}>
+                    <tr key={team.name} className={isThird ? "row-third" : ""} style={team.status === "eliminated" ? { opacity: 0.45 } : {}}>
                       <td className="td-team">
                         <div className="td-team-inner">
-                          <span
-                            className="status-dot"
-                            style={{ background: STATUS_DOT[team.status] || STATUS_DOT.active }}
-                            title={team.status}
-                          />
+                          {team.status === "eliminated"
+                            ? <span className="status-dot" style={{ background: "#ccc" }} />
+                            : <span className="status-pulse" />
+                          }
                           <span className="team-flag">
                             <img src={getFlag(team.flag)} alt={team.name} />
                           </span>
