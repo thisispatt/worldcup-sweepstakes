@@ -78,10 +78,11 @@ export default function Groups({ groups, fixtures, entries }) {
                 {standings.map((team, idx) => {
                   const pts = team.won * 3 + team.drawn;
                   const gd  = team.gf - team.ga;
-                  const isQ = idx < 2;
+            const isQ = idx < 2;
+const isThird = idx === 2;
                   const colleague = entryMap[team.name];
                   return (
-                    <tr key={team.name} className={isQ ? "row-qualify" : ""}>
+                      <tr key={team.name} className={isThird ? "row-third" : ""}>
                       <td className="td-team">
                         <span
                           className="status-dot"
