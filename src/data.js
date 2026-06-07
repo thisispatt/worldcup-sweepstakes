@@ -258,7 +258,7 @@ export const fixtures = [
 // ----------------------------------------------------------------
 export const knockout = {
   R32: [
-    { id: "r32-1",  home: "", away: "", score1: null, score2: null, played: false, date: "28 Jun", time: "20:00" },
+    { id: "r32-1",  home: "France", away: "Spain", score1: 3, score2: 0, played: true, date: "28 Jun", time: "20:00" },
     { id: "r32-2",  home: "", away: "", score1: null, score2: null, played: false, date: "29 Jun", time: "18:00" },
     { id: "r32-3",  home: "", away: "", score1: null, score2: null, played: false, date: "29 Jun", time: "21:30" },
     { id: "r32-4",  home: "", away: "", score1: null, score2: null, played: false, date: "30 Jun", time: "02:00" },
