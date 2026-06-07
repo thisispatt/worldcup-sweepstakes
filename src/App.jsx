@@ -48,7 +48,7 @@ export default function App() {
       <main className="main">
         {tab === "sweep"    && <Sweepstakes entries={entries} teamStatus={{}} groups={groups} />}
         {tab === "groups"   && <Groups groups={groups} fixtures={fixtures} entries={entries} />}
-        {tab === "fixtures" && <Fixtures fixtures={fixtures} groups={groups} />}
+        {tab === "fixtures" && <Fixtures fixtures={fixtures} groups={groups} entries={entries} />}
         {tab === "bracket"  && <Bracket knockout={knockout} groups={groups} />}
         {tab === "prize"    && <Prize entries={entries} entryFee={ENTRY_FEE} prizes={PRIZES} teamStatus={{}} groups={groups} />}
       </main>
