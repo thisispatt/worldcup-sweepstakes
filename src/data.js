@@ -78,10 +78,10 @@ export const entries = [
 // ----------------------------------------------------------------
 export const groups = {
   A: { teams: [
-    { name: "Mexico",       flag: "mx", status: "active" },
-    { name: "South Africa", flag: "za", status: "active" },
-    { name: "South Korea",  flag: "kr", status: "active" },
-    { name: "Czechia",      flag: "cz", status: "active" },
+    { name: "Mexico",       flag: "mx", status: "eliminated" },
+    { name: "South Africa", flag: "za", status: "champion" },
+    { name: "South Korea",  flag: "kr", status: "runner-up" },
+    { name: "Czechia",      flag: "cz", status: "third" },
   ]},
   B: { teams: [
     { name: "Canada",               flag: "ca", status: "active" },
