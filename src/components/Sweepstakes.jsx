@@ -55,7 +55,7 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
         <input
           className="search-input"
           type="text"
-          placeholder="Search by team or name"
+          placeholder="Search by team or player"
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
