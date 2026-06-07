@@ -2,11 +2,11 @@ import { useMemo, useState } from "react";
 import { getFlag } from "../flag";
 
 const STATUS_CONFIG = {
-  active:     { label: "Active",       color: "#1a8a4a", bg: "#e6f7ee" },
-  eliminated: { label: "Eliminated",   color: "#888",    bg: "#f2f2f2" },
-  champion:   { label: "Champion 🥇",  color: "#b8860b", bg: "#fff8dc" },
-  "runner-up":{ label: "Runner-up 🥈", color: "#607d8b", bg: "#eceff1" },
-  third:      { label: "3rd Place 🥉", color: "#8d6e63", bg: "#efebe9" },
+  active:      { border: null },
+  eliminated:  { border: null },
+  champion:    { border: "#f59e0b" },
+  "runner-up": { border: "#94a3b8" },
+  third:       { border: "#d97706" },
 };
 
 function getTeamData(teamName, groups) {
@@ -78,7 +78,7 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
           const sc = STATUS_CONFIG[e.status] || STATUS_CONFIG.active;
           const isOut = e.status === "eliminated";
           return (
-            <div key={i} className={`entry-card${isOut ? " entry-out" : ""}`}>
+              <div key={i} className={`entry-card${isOut ? " entry-out" : ""}`} style={sc.border ? { borderTop: `3px solid ${sc.border}` } : {}}>
               <div className="entry-flag">
                 <img src={getFlag(e.flagCode)} alt={e.team} />
               </div>
@@ -88,10 +88,7 @@ export default function Sweepstakes({ entries, teamStatus, groups }) {
               </div>
               <div className="entry-right">
                 <span className="entry-group">Grp {e.group}</span>
-                {e.status === "active"
-  ? <span className="status-pulse" />
-  : <span className="status-badge" style={{ color: sc.color, background: sc.bg }}>{sc.label}</span>
-}
+                {e.status === "active" && <span className="status-pulse" />}
               </div>
             </div>
           );
