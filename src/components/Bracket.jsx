@@ -98,24 +98,33 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
       })}
 
       <div className="ko-round">
-        <div className="ko-finals-layout">
-          <div className="ko-finals-matches">
-            <div style={{ marginBottom: "1rem" }}>
-              <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
-              {knockout.Third?.map(m => (
-                <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
-              ))}
-            </div>
-            <div>
-              <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
-              {knockout.Final?.map(m => (
-                <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
-              ))}
-            </div>
-          </div>
-          <PrizeSidebar prizes={prizes} entryFee={entryFee} entries={entries} />
-        </div>
-      </div>
+  <div className="ko-final-row">
+    <div>
+      <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>3rd place · {knockout.Third?.[0]?.date}</div>
+      {knockout.Third?.map(m => (
+        <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
+      ))}
     </div>
-  );
-}
+    <div className="ko-prize-card" style={{ borderTop: "3px solid #d97706" }}>
+      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.third)}</div>
+      <div className="ko-prize-lbl">3rd place</div>
+    </div>
+  </div>
+
+  <div className="ko-final-row" style={{ marginTop: "1.5rem" }}>
+    <div>
+      <div className="ko-round-label" style={{ marginBottom: "0.5rem" }}>Final · {knockout.Final?.[0]?.date}</div>
+      {knockout.Final?.map(m => (
+        <MatchCard key={m.id} match={m} groups={groups} entryMap={entryMap} />
+      ))}
+    </div>
+    <div className="ko-prize-card" style={{ borderTop: "3px solid #f59e0b" }}>
+      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.first)}</div>
+      <div className="ko-prize-lbl">1st place</div>
+    </div>
+    <div className="ko-prize-card" style={{ borderTop: "3px solid #94a3b8" }}>
+      <div className="ko-prize-amt">€{Math.round(entries.length * entryFee * prizes.second)}</div>
+      <div className="ko-prize-lbl">Runner-up</div>
+    </div>
+  </div>
+</div>
