@@ -78,25 +78,26 @@ export default function Groups({ groups, fixtures, entries }) {
                 {standings.map((team, idx) => {
                   const pts = team.won * 3 + team.drawn;
                   const gd  = team.gf - team.ga;
-            const isQ = idx < 2;
-            const isThird = idx === 1;
+                  const isThird = idx === 1;
                   const colleague = entryMap[team.name];
                   return (
-                      <tr key={team.name} className={isThird ? "row-third" : ""}>
+                    <tr key={team.name} className={isThird ? "row-third" : ""}>
                       <td className="td-team">
-                        <span
-                          className="status-dot"
-                          style={{ background: STATUS_DOT[team.status] || STATUS_DOT.active }}
-                          title={team.status}
-                        />
-                        <span className="team-flag">
-                          <img src={getFlag(team.flag)} alt={team.name} />
-                        </span>
-                        <div>
-                          <div className="team-name-sm">{team.shortName || team.name}</div>
-                          {colleague && colleague !== "TBD" && (
-                            <div className="team-colleague">{colleague}</div>
-                          )}
+                        <div className="td-team-inner">
+                          <span
+                            className="status-dot"
+                            style={{ background: STATUS_DOT[team.status] || STATUS_DOT.active }}
+                            title={team.status}
+                          />
+                          <span className="team-flag">
+                            <img src={getFlag(team.flag)} alt={team.name} />
+                          </span>
+                          <div>
+                            <div className="team-name-sm">{team.shortName || team.name}</div>
+                            {colleague && colleague !== "TBD" && (
+                              <div className="team-colleague">{colleague}</div>
+                            )}
+                          </div>
                         </div>
                       </td>
                       <td>{team.played}</td>
