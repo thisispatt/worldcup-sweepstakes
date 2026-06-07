@@ -79,7 +79,7 @@ export default function Groups({ groups, fixtures, entries }) {
                   const pts = team.won * 3 + team.drawn;
                   const gd  = team.gf - team.ga;
             const isQ = idx < 2;
-const isThird = idx === 2;
+            const isThird = idx === 1;
                   const colleague = entryMap[team.name];
                   return (
                       <tr key={team.name} className={isThird ? "row-third" : ""}>
