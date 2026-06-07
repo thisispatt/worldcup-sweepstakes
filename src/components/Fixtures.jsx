@@ -57,7 +57,7 @@ export default function Fixtures({ fixtures, groups, entries }) {
         <input
           className="search-input"
           type="text"
-          placeholder="Search by team or colleague name…"
+          placeholder="Search by team or name"
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
