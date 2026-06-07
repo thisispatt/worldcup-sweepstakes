@@ -128,3 +128,5 @@ export default function Bracket({ knockout, groups, entries, entryFee, prizes })
     </div>
   </div>
 </div>
+  );
+}
