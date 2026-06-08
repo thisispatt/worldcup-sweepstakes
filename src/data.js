@@ -65,7 +65,7 @@ export const entries = [
   { name: "Patrick G", team: "Spain" },
   { name: "George S", team: "Sweden" },
   { name: "Frank Mc", team: "Switzerland" },
-  { name: "TBD", team: "Tunisia" },
+  { name: "Martin F", team: "Tunisia" },
   { name: "Karina Mc", team: "Türkiye" },
   { name: "Tara K", team: "United States" },
   { name: "Chris P", team: "Uruguay" },
