@@ -29,7 +29,7 @@ export const entries = [
   { name: "Orla K", team: "Belgium" },
   { name: "Claire C", team: "Bosnia-Herzegovina" },
   { name: "TBD", team: "Brazil" },
-  { name: "Joseph Heade", team: "Canada" },
+  { name: "Joseph H", team: "Canada" },
   { name: "Aine D", team: "Cape Verde" },
   { name: "James Mc", team: "Colombia" },
   { name: "TBD", team: "Croatia" },
