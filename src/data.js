@@ -61,7 +61,7 @@ export const entries = [
   { name: "Katrina D", team: "Scotland" },
   { name: "Mark F", team: "Senegal" },
   { name: "Colm B", team: "South Africa" },
-  { name: "TBD", team: "South Korea" },
+  { name: "Morgane C", team: "South Korea" },
   { name: "Patrick G", team: "Spain" },
   { name: "George S", team: "Sweden" },
   { name: "Frank Mc", team: "Switzerland" },
