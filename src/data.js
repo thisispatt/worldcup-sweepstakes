@@ -49,7 +49,7 @@ export const entries = [
   { name: "TBD", team: "Japan" },
   { name: "Brian O", team: "Jordan" },
   { name: "TBD", team: "Mexico" },
-  { name: "TBD", team: "Morocco" },
+  { name: "Alana FP", team: "Morocco" },
   { name: "Kate C", team: "Netherlands" },
   { name: "Breandan O", team: "New Zealand" },
   { name: "Michael G", team: "Norway" },
