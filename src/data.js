@@ -43,7 +43,7 @@ export const entries = [
   { name: "Alexandre C", team: "Germany" },
   { name: "TBD", team: "Ghana" },
   { name: "Gareth C", team: "Haiti" },
-  { name: "TBD", team: "Iran" },
+  { name: "Fiona Mc", team: "Iran" },
   { name: "James M", team: "Iraq" },
   { name: "Matthew C", team: "Ivory Coast" },
   { name: "TBD", team: "Japan" },
