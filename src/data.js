@@ -44,7 +44,7 @@ export const entries = [
   { name: "TBD", team: "Ghana" },
   { name: "Gareth C", team: "Haiti" },
   { name: "TBD", team: "Iran" },
-  { name: "TBD", team: "Iraq" },
+  { name: "James M", team: "Iraq" },
   { name: "Matthew C", team: "Ivory Coast" },
   { name: "TBD", team: "Japan" },
   { name: "Brian O", team: "Jordan" },
